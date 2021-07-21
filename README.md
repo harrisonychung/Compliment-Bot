@@ -1,0 +1,1 @@
+# Using this repository for creating a discord bot that initially will compliment users. I would eventually want the bot to be able to send reminders to discord users every "x" minutes to drink water.
