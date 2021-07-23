@@ -2,8 +2,18 @@
 
 import discord
 import os
+import requests
+import json
+
 
 client = discord.Client()
+
+def get_quote(): 
+  response = request.get
+  ("htttps://zenquotes.io/api/random")
+  json_data = json.loads(response.text)
+  quote = json_data[0]['q'] + " -" + json_data[0]['a']
+  return quote #q stands for quote / key in zenquote api
 
 @client.event
 async def on_ready():
@@ -15,7 +25,7 @@ async def on_message(message):
     return
 
   if message.content.startswith('$Hello'):
-    await message.channel.send('Hello!')
+    await message.channel.send('You look great today!')
 
 
 client.run(os.environ['TOKEN'])
