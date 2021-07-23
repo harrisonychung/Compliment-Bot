@@ -1,1 +1,1 @@
-# Using this repository for creating a discord bot that initially will compliment users. I would eventually want the bot to be able to send reminders to discord users every "x" minutes to drink water.
+# Using this repository for creating a discord bot that initially will be programmed to compliment users. I would eventually want to transcribe this code and make the bot be able to send reminders to discord users on their respective servers every "x" minutes to drink water, and take a break from using the computer.
