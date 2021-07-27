@@ -8,12 +8,14 @@ import random
 
 client = discord.Client()
 
-sad_words = ["depressed", "unhappy", "sad", "melancholy", "miserable", "downcast", "dejected"]
+sad_words = ["depressed", "unhappy", "sad", "melancholy", "miserable", "downcast", "dejected", "disappointed", "uncertain"]
 
 starter_encouragements = [
   "Cheer up!",
   "Hang in there!",
   "You are a great person!"
+  "It'll get better"
+  "Take a breath, and relax"
 ]
 
 def get_quote(): 
