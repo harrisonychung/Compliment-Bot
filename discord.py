@@ -5,17 +5,17 @@ import os
 import requests
 import json
 import random
+from replit import db
+
 
 client = discord.Client()
 
-sad_words = ["depressed", "unhappy", "sad", "melancholy", "miserable", "downcast", "dejected", "disappointed", "uncertain"]
+sad_words = ["depressed", "unhappy", "sad", "melancholy", "miserable", "downcast", "dejected"]
 
 starter_encouragements = [
   "Cheer up!",
   "Hang in there!",
   "You are a great person!"
-  "It'll get better"
-  "Take a breath, and relax"
 ]
 
 def get_quote(): 
@@ -23,6 +23,14 @@ def get_quote():
   json_data = json.loads(response.text)
   quote = json_data[0]['q'] + " —" + json_data[0]['a']
   return(quote) #q stands for quote / key in zenquote api
+
+def update_encouragements(encouraging_message):
+  if "encouragements" in db.keys():
+    encouragements = db["encouragements"]
+    encouragements.append(encouraging_message)
+    db["encouragements"] = encouragements
+  else:
+    db["encouragements"] = [encouraging_message]
 
 @client.event
 async def on_ready():
