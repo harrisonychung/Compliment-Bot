@@ -32,6 +32,12 @@ def update_encouragements(encouraging_message):
   else:
     db["encouragements"] = [encouraging_message]
 
+def delete_encouragements(index):
+  encouragements = db["encouragements"]
+  if len(encouragements) > index:
+    del encouragements[index]
+    db["encouragements"] = encouragements
+
 @client.event
 async def on_ready():
   print('We have logged in as {0.user}'.format(client))
@@ -52,3 +58,4 @@ async def on_message(message):
 
 
 client.run(os.environ['TOKEN'])
+
