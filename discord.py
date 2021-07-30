@@ -18,6 +18,9 @@ starter_encouragements = [
   "You are a great person!"
 ]
 
+if "responding" not in db.keys():
+  db["responding"] = True
+
 def get_quote(): 
   response = requests.get("https://zenquotes.io/api/random")
   json_data = json.loads(response.text)
@@ -53,12 +56,13 @@ async def on_message(message):
     quote = get_quote()
     await message.channel.send(quote)
   
-  options = starter_encouragements
-  if "encouragements" in db.keys():
-    options = options + list(db["encouragements"])
+  if db["responding"]:
+    options = starter_encouragements
+    if "encouragements" in db.keys():
+      options = options + list(db["encouragements"])
 
-  if any(word in msg for word in sad_words):
-    await message.channel.send(random.choice(options))
+    if any(word in msg for word in sad_words):
+      await message.channel.send(random.choice(options))
 
   if msg.startswith("$new"):
     encouraging_message = msg.split("$new ",1)[1]
@@ -73,7 +77,11 @@ async def on_message(message):
       encouragements = db["encouragements"]
     await message.channel.send(encouragements)
 
-
+  if msg.startswith("$list"):
+    encouragements = []
+    if "encouragements" in db.keys():
+      encouragements = db["encouragements"]
+    await message.channel.send(encouragements)
 
 
 
