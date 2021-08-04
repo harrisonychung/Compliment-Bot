@@ -59,7 +59,7 @@ async def on_message(message):
   if db["responding"]:
     options = starter_encouragements
     if "encouragements" in db.keys():
-      options = options + list(db["encouragements"])
+      options = options.extend(db["encouragements"])
 
     if any(word in msg for word in sad_words):
       await message.channel.send(random.choice(options))
@@ -88,8 +88,12 @@ async def on_message(message):
 
     if value.lower() == "true":
       db["responding"] = True
-      await message.channel.send("Responding is on.")
+      await message.channel.send("I'm back! Let's continue.")
     else: 
       db["responding"] = False
-      await message.channel.send("Responding is off.")
+      await message.channel.send("I need to take a call. Brb.")
+
+
+
+client.run(os.environ['TOKEN'])
 
